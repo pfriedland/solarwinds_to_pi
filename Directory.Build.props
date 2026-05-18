@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'QueryOrionNodes'">
+    <BaseIntermediateOutputPath>obj\QueryOrionNodes\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'PIArchiveConnectivity'">
+    <BaseIntermediateOutputPath>obj\PIArchiveConnectivity\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>

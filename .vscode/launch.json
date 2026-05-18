@@ -1,0 +1,19 @@
+  {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug QueryOrionNodes",
+        "type": "coreclr",
+        "request": "launch",
+        "program": "${workspaceFolder}/bin/Debug/net10.0/QueryOrionNodes.dll",
+        "args": [
+          "solarwinds01",
+          "PROD10\\pfriedland",
+          "--no-proxy",
+          "--skip-cert-validation"
+        ],
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal",
+      }
+    ]
+  }
