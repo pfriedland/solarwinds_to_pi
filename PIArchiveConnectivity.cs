@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.PI;
 
+// PIArchiveConnectivity is a focused AF SDK smoke test. It confirms the local
+// AF SDK install, PI Data Archive authentication, and optional snapshot reads.
 internal static class PIArchiveConnectivity
 {
     private static int Main(string[] args)
@@ -105,7 +108,22 @@ internal static class PIArchiveConnectivity
         Console.WriteLine("Point: " + point.Name);
         Console.WriteLine("Timestamp: " + snapshot.Timestamp);
         Console.WriteLine("Value: " + snapshot.Value);
-        Console.WriteLine("Units: " + point.GetAttribute(PICommonPointAttributes.EngineeringUnits));
+        Console.WriteLine("Units: " + GetEngineeringUnits(point));
+    }
+
+    private static string GetEngineeringUnits(PIPoint point)
+    {
+        try
+        {
+            // AF SDK point attributes must be loaded before GetAttribute can read them.
+            point.LoadAttributes(new[] { PICommonPointAttributes.EngineeringUnits });
+            object units = point.GetAttribute(PICommonPointAttributes.EngineeringUnits);
+            return units == null ? string.Empty : units.ToString();
+        }
+        catch (KeyNotFoundException)
+        {
+            return string.Empty;
+        }
     }
 
     private static void PrintUsage()

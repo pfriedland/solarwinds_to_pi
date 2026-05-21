@@ -5,8 +5,11 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+// QueryOrionNodes is a diagnostic utility for validating the SWIS REST query
+// independently from any PI AF SDK dependencies.
 internal static class QueryOrionNodes
 {
+    // This query mirrors the SolarWinds node selection used by the PI bridge.
     private const string Swql = """
 SELECT
     n.NodeID,
@@ -102,6 +105,8 @@ ORDER BY n.Caption
 
         password ??= ReadPassword("Orion password: ");
 
+        // The no-proxy and certificate switches are useful for internal Orion
+        // deployments where Windows proxy or private PKI settings can block tests.
         using HttpClient client = CreateClient(username, password, skipCertificateValidation, noProxy);
         Uri queryUri = new($"https://{server}:{port}/SolarWinds/InformationService/v3/Json/Query");
 

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>WINDOWS_SERVICE</DefineConstants>
+    <AfSdkPath Condition="'$(AfSdkPath)' == ''">C:\Program Files (x86)\PIPC\AF\PublicAssemblies\4.0\OSIsoft.AFSDK.dll</AfSdkPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="SolarWindsPiBridgeService.cs" />
+    <Compile Include="SolarWindsPiTagAudit.cs" />
+    <Reference Include="OSIsoft.AFSDK">
+      <HintPath>$(AfSdkPath)</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+
+  <Target Name="ValidateAfSdkPath" BeforeTargets="ResolveReferences">
+    <Error
+      Condition="!Exists('$(AfSdkPath)')"
+      Text="OSIsoft.AFSDK.dll was not found. Pass the path with -p:AfSdkPath=&quot;C:\path\to\OSIsoft.AFSDK.dll&quot;" />
+  </Target>
+</Project>

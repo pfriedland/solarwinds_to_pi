@@ -6,4 +6,12 @@
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'PIArchiveConnectivity'">
     <BaseIntermediateOutputPath>obj\PIArchiveConnectivity\</BaseIntermediateOutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'SolarWindsPiTagAudit'">
+    <BaseIntermediateOutputPath>obj\SolarWindsPiTagAudit\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'SolarWindsPiBridgeService'">
+    <BaseIntermediateOutputPath>obj\SolarWindsPiBridgeService\</BaseIntermediateOutputPath>
+  </PropertyGroup>
 </Project>

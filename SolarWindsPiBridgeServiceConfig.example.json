@@ -1,0 +1,13 @@
+{
+  "orionServer": "YOUR_ORION_SERVER",
+  "orionUsername": "DOMAIN\\ldap_user",
+  "orionPassword": "replace-with-orion-password",
+  "orionPort": 17774,
+  "orionNoProxy": true,
+  "orionSkipCertValidation": true,
+  "piServer": "AndvrPIDatArchB.enelint.global",
+  "forever": true,
+  "intervalMinutes": 5,
+  "dryRunCreate": false,
+  "logPath": "C:\\apps\\sw_to_pi\\logs\\SolarWindsPiBridgeService.log"
+}
